@@ -1,11 +1,16 @@
+import { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Picture from "./components/Picture";
 import Dialog from "./components/Dialog";
 
 const App = () => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Handle form submission here
+  const [texts, setTexts] = useState(["abc", "123"]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newText = e.target.text.value;
+    setTexts([...texts, newText]);
+    e.target.text.value = "";
   };
 
   return (
@@ -17,20 +22,13 @@ const App = () => {
           </div>
         </Col>
       </Row>
+
       <Row style={{ height: "60vh", overflowY: "scroll" }}>
         <Col className="d-flex justify-content-center align-items-center">
-          {/* Your scrollable content here */}
-          <div>
-            {Array.from({ length: 50 }, (_, i) => (
-              <div key={i} className="my-3">
-                Scrollable content
-                blablablablablablablablablablablablablablablablablablablablabla{" "}
-                {i + 1}
-              </div>
-            ))}
-          </div>
+          <Dialog texts={texts}></Dialog>
         </Col>
       </Row>
+
       <Row style={{ height: "10%", backgroundColor: "#f8f9fa" }}>
         <Col className="d-flex justify-content-center align-items-center">
           <div className="fixed-bottom pb-4">
@@ -40,6 +38,7 @@ const App = () => {
                   type="text"
                   placeholder="Enter your message"
                   className="mr-2"
+                  name="text"
                 />
                 <Button type="submit">Send</Button>
               </Form.Group>

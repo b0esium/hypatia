@@ -7,6 +7,7 @@ function Picture() {
       alt="Hypatia"
       style={{
         width: "26vh",
+        borderRadius: "6px",
       }}
     />
   );

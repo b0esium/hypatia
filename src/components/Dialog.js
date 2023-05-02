@@ -1,55 +1,10 @@
-function Dialog() {
+function Dialog({ texts }) {
   return (
-    <div>
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-      sqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhiethehsqhgmlzhrgimohjqrzgmoihhgjeitqlhùpqezhietheh
-    </div>
+    <ul>
+      {texts.map((text) => {
+        return <li key={text}>{text}</li>;
+      })}
+    </ul>
   );
 }
 
