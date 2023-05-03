@@ -4,13 +4,26 @@ import Picture from "./components/Picture";
 import Dialog from "./components/Dialog";
 
 const App = () => {
-  const [texts, setTexts] = useState(["abc", "123"]);
+  const [texts, setTexts] = useState([]);
+  const [questionID, setQuestionID] = useState(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newText = e.target.text.value;
-    setTexts([...texts, newText]);
-    e.target.text.value = "";
+    const newQuestion = e.target.text.value;
+
+    // obtain answer from API
+    console.log("id: " + questionID);
+    fetch("http://localhost:8000/responses/" + questionID)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        const newAnswer = data.content;
+        setTexts([...texts, [newQuestion, newAnswer]]);
+        e.target.text.value = "";
+      });
+
+    setQuestionID(questionID + 1);
   };
 
   return (
@@ -23,8 +36,11 @@ const App = () => {
         </Col>
       </Row>
 
-      <Row style={{ height: "60vh", overflowY: "scroll" }}>
-        <Col className="d-flex justify-content-center align-items-center">
+      <Row style={{ height: "60vh", overflowY: "scroll", paddingTop: "2vh" }}>
+        <Col
+          className="d-flex align-items-center"
+          style={{ flexDirection: "column" }}
+        >
           <Dialog texts={texts}></Dialog>
         </Col>
       </Row>

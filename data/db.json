@@ -1,0 +1,12 @@
+{
+    "responses": [
+      {
+        "content": "Answer 1",
+        "id": 0
+      },
+      {
+        "content": "Answer 2",
+        "id": 1
+      }
+    ]
+  }
