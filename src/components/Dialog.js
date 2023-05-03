@@ -19,10 +19,26 @@ function Dialog({ texts }) {
     <div ref={dialogRef}>
       {texts.map((text, index) => {
         return (
-          <ul key={index}>
-            <li key={`${index}-${text[0]}`}>{text[0]}</li>
-            <li key={`${index}-${text[1]}`}>{text[1]}</li>
-          </ul>
+          <div key={index} style={{ marginBottom: "24px" }}>
+            {/* question */}
+            <div
+              key={`${index}-${text[0]}`}
+              style={{ color: "grey", marginBottom: "6px" }}
+            >
+              {text[0]}
+            </div>
+            {/* answer */}
+            <div
+              key={`${index}-${text[1]}`}
+              style={{
+                border: "1px solid #ccc",
+                borderRadius: "4px",
+                padding: "6px",
+              }}
+            >
+              {text[1]}
+            </div>
+          </div>
         );
       })}
     </div>

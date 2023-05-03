@@ -39,7 +39,7 @@ const App = () => {
       <Row style={{ height: "60vh", overflowY: "scroll", paddingTop: "2vh" }}>
         <Col
           className="d-flex align-items-center"
-          style={{ flexDirection: "column" }}
+          style={{ flexDirection: "column", padding: "0 24px" }}
         >
           <Dialog texts={texts}></Dialog>
         </Col>
