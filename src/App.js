@@ -2,28 +2,33 @@ import { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Picture from "./components/Picture";
 import Dialog from "./components/Dialog";
+import Answer from "./answer";
 
 const App = () => {
   const [texts, setTexts] = useState([]);
-  const [questionID, setQuestionID] = useState(0);
+
+  function getAnswer(question) {
+    return new Promise((resolve) => {
+      Answer(question, resolve);
+    });
+  }
+
+  async function askAPI(question) {
+    try {
+      let answer = await getAnswer(question);
+      setTexts([...texts, [question, answer]]);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newQuestion = e.target.text.value;
 
-    // obtain answer from API
-    console.log("id: " + questionID);
-    fetch("http://localhost:8000/responses/" + questionID)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        const newAnswer = data.content;
-        setTexts([...texts, [newQuestion, newAnswer]]);
-        e.target.text.value = "";
-      });
+    const question = e.target.text.value;
+    askAPI(question);
 
-    setQuestionID(questionID + 1);
+    e.target.text.value = "";
   };
 
   return (
@@ -55,6 +60,7 @@ const App = () => {
                   placeholder="Enter your message"
                   className="mr-2"
                   name="text"
+                  autoFocus
                 />
                 <Button type="submit">Send</Button>
               </Form.Group>
