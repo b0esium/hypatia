@@ -3,6 +3,8 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Picture from "./components/Picture";
 import Dialog from "./components/Dialog";
 import Answer from "./answer";
+import AnimationId from "./animationId";
+import AnimationUrl from "./animationUrl";
 
 const App = () => {
   const [texts, setTexts] = useState([]);
@@ -13,10 +15,35 @@ const App = () => {
     });
   }
 
-  async function askAPI(question) {
+  function getAnimationId(answer) {
+    return new Promise((resolve) => {
+      AnimationId(answer, resolve);
+    });
+  }
+
+  function getAnimationUrl(id) {
+    return new Promise((resolve) => {
+      AnimationUrl(id, resolve);
+    });
+  }
+
+  async function ask(question) {
     try {
+      // openAI
       let answer = await getAnswer(question);
       setTexts([...texts, [question, answer]]);
+
+      // d-id
+      let animationId = await getAnimationId(answer);
+      console.log("animationId: ", animationId);
+
+      // wait for video to be generated
+      let animationUrl = await setTimeout(() => {
+        getAnimationUrl(animationId);
+      }, 8000);
+      console.log("animationUrl: ", animationUrl);
+
+      // replace image with animation video
     } catch (error) {
       console.log(error);
     }
@@ -26,7 +53,7 @@ const App = () => {
     e.preventDefault();
 
     const question = e.target.text.value;
-    askAPI(question);
+    ask(question);
 
     e.target.text.value = "";
   };

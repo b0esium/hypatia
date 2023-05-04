@@ -20,6 +20,7 @@ app.use(express.static("static/js/"));
 
 // routes
 app.use("/openaiapi", require("./routes/openai"));
+app.use("/did", require("./routes/did"));
 
 // enable cors
 app.use(cors());
