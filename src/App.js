@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import Picture from "./components/Picture";
+import DynamicMedia from "./components/DynamicMedia";
 import Dialog from "./components/Dialog";
 import Answer from "./answer";
 import AnimationId from "./animationId";
@@ -8,6 +8,7 @@ import AnimationUrl from "./animationUrl";
 
 const App = () => {
   const [texts, setTexts] = useState([]);
+  const [animationUrl, setAnimationUrl] = useState(null);
 
   function getAnswer(question) {
     return new Promise((resolve) => {
@@ -27,6 +28,17 @@ const App = () => {
     });
   }
 
+  let animationId = undefined;
+
+  async function main(question) {
+    await ask(question);
+
+    // wait for video to be generated
+    setTimeout(async () => {
+      await retrieve(animationId);
+    }, 8000);
+  }
+
   async function ask(question) {
     try {
       // openAI
@@ -34,14 +46,18 @@ const App = () => {
       setTexts([...texts, [question, answer]]);
 
       // d-id
-      let animationId = await getAnimationId(answer);
+      animationId = await getAnimationId(answer);
       console.log("animationId: ", animationId);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
-      // wait for video to be generated
-      let animationUrl = await setTimeout(() => {
-        getAnimationUrl(animationId);
-      }, 8000);
-      console.log("animationUrl: ", animationUrl);
+  async function retrieve(animationId) {
+    try {
+      let newAnimationUrl = await getAnimationUrl(animationId);
+      setAnimationUrl(newAnimationUrl);
+      console.log("newAnimationUrl: ", newAnimationUrl);
 
       // replace image with animation video
     } catch (error) {
@@ -53,22 +69,22 @@ const App = () => {
     e.preventDefault();
 
     const question = e.target.text.value;
-    ask(question);
+    main(question);
 
     e.target.text.value = "";
   };
 
   return (
     <Container fluid style={{ height: "100vh" }}>
-      <Row style={{ height: "30vh", backgroundColor: "#f8f9fa" }}>
+      <Row style={{ height: "30vh" }}>
         <Col className="d-flex justify-content-center align-items-center">
           <div className="fixed-top text-center py-3">
-            <Picture></Picture>
+            <DynamicMedia videoSource={animationUrl}></DynamicMedia>
           </div>
         </Col>
       </Row>
 
-      <Row style={{ height: "60vh", overflowY: "scroll", paddingTop: "2vh" }}>
+      <Row style={{ height: "60vh", overflowY: "scroll", paddingTop: "4vh" }}>
         <Col
           className="d-flex align-items-center"
           style={{ flexDirection: "column", padding: "0 24px" }}

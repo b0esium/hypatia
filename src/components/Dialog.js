@@ -19,7 +19,7 @@ function Dialog({ texts }) {
     <div ref={dialogRef}>
       {texts.map((text, index) => {
         return (
-          <div key={index} style={{ marginBottom: "24px" }}>
+          <div key={index} style={{ marginBottom: "30px" }}>
             {/* question */}
             <div
               key={`${index}-${text[0]}`}
@@ -31,9 +31,9 @@ function Dialog({ texts }) {
             <div
               key={`${index}-${text[1]}`}
               style={{
-                border: "1px solid #ccc",
+                border: "1px solid #ddd",
                 borderRadius: "4px",
-                padding: "6px",
+                padding: "8px",
               }}
             >
               {text[1]}
