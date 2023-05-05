@@ -7,7 +7,6 @@ const DynamicMedia = ({ videoSource }) => {
   useEffect(() => {
     if (videoSource !== null && videoSource !== undefined) {
       setMediaType("video");
-      console.log("switched to video");
     }
   }, [videoSource]);
 

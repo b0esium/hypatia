@@ -28,26 +28,36 @@ const App = () => {
     });
   }
 
-  let animationId = undefined;
+  let animationId,
+    answer = undefined;
 
-  async function main(question) {
+  async function main(question, spinner) {
     await ask(question);
 
     // wait for video to be generated
-    setTimeout(async () => {
-      await retrieve(animationId);
-    }, 8000);
+    if (answer.length <= 120) {
+      setTimeout(async () => {
+        await retrieve(animationId);
+      }, 8000); // TODO: wait time proportional to answer length
+    }
+
+    // end loading & show question and answer
+    setTimeout(() => {
+      spinner.remove();
+      setTexts([...texts, [question, answer]]);
+    }, 4000);
   }
 
   async function ask(question) {
     try {
       // openAI
-      let answer = await getAnswer(question);
-      setTexts([...texts, [question, answer]]);
+      answer = await getAnswer(question);
 
       // d-id
-      animationId = await getAnimationId(answer);
-      console.log("animationId: ", animationId);
+      // check if answer is short enough to animate
+      if (answer.length <= 120) {
+        animationId = await getAnimationId(answer);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -57,9 +67,6 @@ const App = () => {
     try {
       let newAnimationUrl = await getAnimationUrl(animationId);
       setAnimationUrl(newAnimationUrl);
-      console.log("newAnimationUrl: ", newAnimationUrl);
-
-      // replace image with animation video
     } catch (error) {
       console.log(error);
     }
@@ -68,8 +75,15 @@ const App = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // loading...
+    const loader = document.getElementById("loader");
+    const spinner = document.createElement("div");
+    spinner.classList.add("spinner-border", "loader");
+    spinner.style.margin = "auto";
+    loader.appendChild(spinner);
+
     const question = e.target.text.value;
-    main(question);
+    main(question, spinner);
 
     e.target.text.value = "";
   };
@@ -90,6 +104,7 @@ const App = () => {
           style={{ flexDirection: "column", padding: "0 24px" }}
         >
           <Dialog texts={texts}></Dialog>
+          <div id="loader" className="d-flex justify-content-center"></div>
         </Col>
       </Row>
 
@@ -105,7 +120,9 @@ const App = () => {
                   name="text"
                   autoFocus
                 />
-                <Button type="submit">Send</Button>
+                <Button type="submit" className="btn-success">
+                  Send
+                </Button>
               </Form.Group>
             </Form>
           </div>
