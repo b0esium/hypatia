@@ -20,7 +20,7 @@ function DynamicMedia({ videoSource }) {
               <img src={Hypatia} alt="Hypatia" className="hypatia" />
             )}
             {mediaType === "video" && (
-              <video src={videoSource} autoPlay className="hypatia" />
+              <video src={videoSource} controls autoPlay className="hypatia" />
             )}
           </div>
         </div>
