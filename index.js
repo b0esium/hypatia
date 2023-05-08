@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const cors = require("cors");
 const rateLimit = require("express-rate-limit");
 require("dotenv").config();
@@ -16,7 +17,7 @@ app.use(limiter);
 app.set("trust proxy", 1);
 
 // set static folder
-app.use(express.static("static/js/"));
+app.use(express.static(path.join(__dirname, "build")));
 
 // routes
 app.use("/openaiapi", require("./routes/openai"));
