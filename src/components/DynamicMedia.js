@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { Row, Col } from "react-bootstrap";
 import Hypatia from "../assets/hypatia.png";
 
-const DynamicMedia = ({ videoSource }) => {
+function DynamicMedia({ videoSource }) {
   const [mediaType, setMediaType] = useState("image"); // initially an image
 
   useEffect(() => {
@@ -11,29 +12,21 @@ const DynamicMedia = ({ videoSource }) => {
   }, [videoSource]);
 
   return (
-    <div>
-      {mediaType === "image" && (
-        <img
-          src={Hypatia}
-          alt="Hypatia"
-          style={{
-            width: "26vh",
-            borderRadius: "6px",
-          }}
-        />
-      )}
-      {mediaType === "video" && (
-        <video
-          src={videoSource}
-          autoPlay
-          style={{
-            width: "26vh",
-            borderRadius: "6px",
-          }}
-        />
-      )}
-    </div>
+    <Row className="hypatia-row">
+      <Col className="d-flex justify-content-center align-items-center">
+        <div className="fixed-top text-center py-3">
+          <div>
+            {mediaType === "image" && (
+              <img src={Hypatia} alt="Hypatia" className="hypatia" />
+            )}
+            {mediaType === "video" && (
+              <video src={videoSource} autoPlay className="hypatia" />
+            )}
+          </div>
+        </div>
+      </Col>
+    </Row>
   );
-};
+}
 
 export default DynamicMedia;

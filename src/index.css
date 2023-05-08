@@ -12,6 +12,32 @@ code {
     monospace;
 }
 
+.page { height: 100vh; }
+
+.hypatia-row { height: 30vh; }
+
+.hypatia {
+  width: 26vh;
+  border-radius: 6px;
+}
+
 .loader {
   color: darkolivegreen;
 }
+
+.dialog-container { height: 60vh; overflow-y: scroll; padding-top: 4vh; }
+
+.dialog { flex-direction: column; padding: 0 24px; }
+
+.q-a { margin-bottom: 30px; }
+
+.question { color: grey; margin-bottom: 6px }
+
+.answer {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.input { height: 10%; background-color: #f8f9fa;
+ }

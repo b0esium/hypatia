@@ -1,7 +1,10 @@
 import { useState } from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container } from "react-bootstrap";
+// components
 import DynamicMedia from "./components/DynamicMedia";
 import Dialog from "./components/Dialog";
+import Input from "./components/Input";
+// API calls
 import Answer from "./answer";
 import AnimationId from "./animationId";
 import AnimationUrl from "./animationUrl";
@@ -9,6 +12,8 @@ import AnimationUrl from "./animationUrl";
 const App = () => {
   const [texts, setTexts] = useState([]);
   const [animationUrl, setAnimationUrl] = useState(null);
+
+  // promises for async calls
 
   function getAnswer(question) {
     return new Promise((resolve) => {
@@ -28,26 +33,12 @@ const App = () => {
     });
   }
 
-  let animationId,
-    answer = undefined;
+  // async calls to APIs
 
-  async function main(question, spinner) {
-    await ask(question);
+  let answer,
+    animationId = undefined;
 
-    // wait for video to be generated
-    if (answer.length <= 120) {
-      setTimeout(async () => {
-        await retrieve(animationId);
-      }, 8000); // TODO: wait time proportional to answer length
-    }
-
-    // end loading & show question and answer
-    setTimeout(() => {
-      spinner.remove();
-      setTexts([...texts, [question, answer]]);
-    }, 4000);
-  }
-
+  // get openAI answer & d-id animation ID
   async function ask(question) {
     try {
       // openAI
@@ -63,13 +54,31 @@ const App = () => {
     }
   }
 
-  async function retrieve(animationId) {
+  // get animation video from its ID
+  async function retrieveAnimation(animationId) {
     try {
       let newAnimationUrl = await getAnimationUrl(animationId);
       setAnimationUrl(newAnimationUrl);
     } catch (error) {
       console.log(error);
     }
+  }
+
+  async function main(question, spinner) {
+    await ask(question);
+
+    // wait for video to be generated
+    if (answer.length <= 120) {
+      setTimeout(async () => {
+        await retrieveAnimation(animationId);
+      }, 8000);
+    }
+
+    // end loading & show question and answer
+    setTimeout(() => {
+      spinner.remove();
+      setTexts([...texts, [question, answer]]);
+    }, 4000);
   }
 
   const handleSubmit = (e) => {
@@ -89,46 +98,12 @@ const App = () => {
   };
 
   return (
-    <Container fluid style={{ height: "100vh" }}>
-      <Row style={{ height: "30vh" }}>
-        <Col className="d-flex justify-content-center align-items-center">
-          <div className="fixed-top text-center py-3">
-            <DynamicMedia videoSource={animationUrl}></DynamicMedia>
-          </div>
-        </Col>
-      </Row>
+    <Container fluid className="page">
+      <DynamicMedia videoSource={animationUrl}></DynamicMedia>
 
-      <Row style={{ height: "60vh", overflowY: "scroll", paddingTop: "4vh" }}>
-        <Col className="col-1 col-xl-3"></Col>
-        <Col
-          className="d-flex align-items-center col-10 col-xl-6"
-          style={{ flexDirection: "column", padding: "0 24px" }}
-        >
-          <Dialog texts={texts}></Dialog>
-          <div id="loader" className="d-flex justify-content-center"></div>
-        </Col>
-      </Row>
+      <Dialog texts={texts}></Dialog>
 
-      <Row style={{ height: "10%", backgroundColor: "#f8f9fa" }}>
-        <Col className="d-flex justify-content-center align-items-center">
-          <div className="fixed-bottom pb-4">
-            <Form onSubmit={handleSubmit}>
-              <Form.Group className="d-flex px-5">
-                <Form.Control
-                  type="text"
-                  placeholder="Enter your message"
-                  className="mr-2"
-                  name="text"
-                  autoFocus
-                />
-                <Button type="submit" className="btn-success">
-                  Send
-                </Button>
-              </Form.Group>
-            </Form>
-          </div>
-        </Col>
-      </Row>
+      <Input handleSubmit={handleSubmit}></Input>
     </Container>
   );
 };
