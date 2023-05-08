@@ -21,7 +21,7 @@ router.get("/id", cache("60 minutes"), async (req, res) => {
       },
     };
     const body = {
-      source_url: "https://imgur.com/a/T5sEKtQ",
+      source_url: "https://i.imgur.com/HSbk0eC.png",
       script: {
         type: "text",
         input: input,
