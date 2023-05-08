@@ -20,8 +20,8 @@ app.set("trust proxy", 1);
 app.use(express.static(path.join(__dirname, "build")));
 
 // routes
-app.use("/openaiapi", require("./routes/openai"));
-app.use("/did", require("./routes/did"));
+app.use("/openaiapi", require("./src/routes/openai"));
+app.use("/did", require("./src/routes/did"));
 
 // enable cors
 app.use(cors());
