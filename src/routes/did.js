@@ -21,7 +21,7 @@ router.get("/id", cache("60 minutes"), async (req, res) => {
       },
     };
     const body = {
-      source_url: "https://i.imgur.com/HSbk0eC.png",
+      source_url: "assets/hypatia.png",
       script: {
         type: "text",
         input: input,
