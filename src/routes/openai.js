@@ -22,7 +22,7 @@ router.get("/text", cache("60 minutes"), async (req, res) => {
     const body = {
       model: "gpt-3.5-turbo",
       messages: [{ role: "user", content: prompt }],
-      max_tokens: 50,
+      max_tokens: 200,
       temperature: 0,
     };
     const apiRes = await needle("post", `${OPENAIAPI_TEXT_URL}`, body, options);
